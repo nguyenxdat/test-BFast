@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/txt_title_new_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/new_todo"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_title_enter_name_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title_new_todo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/enter_the_todo_name"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_small" />
+
+    <EditText
+        android:id="@+id/edt_todo_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title_enter_name_todo"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_edt_login"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/_5sdp"
+        android:textSize="@dimen/_13ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/edt_todo_name"
+        android:layout_alignRight="@id/edt_todo_name"
+        android:layout_below="@id/edt_todo_name"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_login"
+            android:onClick="onCancelClickListener"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_normal" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_login"
+            android:onClick="onSaveClickListener"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_normal" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

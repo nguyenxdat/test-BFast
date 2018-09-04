@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Todo List</string>
+    <string name="email">Email:</string>
+    <string name="pass_word">Password:</string>
+    <string name="hint_enter_your_email">Enter your Email</string>
+    <string name="hint_enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="error_email_not_null">You must enter email</string>
+    <string name="error_password_not_null">You must enter your password</string>
+    <string name="error_email_not_valid">Email invalidate</string>
+    <string name="loading">Loading...</string>
+    <string name="title_todo_list">@string/app_name</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="new_todo">New todo</string>
+    <string name="enter_the_todo_name">Enter the todo\'s name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="error_todo_name_not_null">Todo\'s name not empty</string>
+</resources>
