@@ -1,6 +1,7 @@
 package vn.datnx.todolist.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,7 @@ public class AdapterListTodo extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private void bindData(final ViewHolder viewHolder, ItemTodo itemTodo, int position) {
         viewHolder.txtTitle.setText(itemTodo.getTitle());
+        viewHolder.txtTitle.setTextColor(itemTodo.isComplete() ? Color.RED : Color.BLACK);
         viewHolder.itemView.setOnClickListener(onClickListener);
         viewHolder.imgEdit.setOnClickListener(onClickListener);
         viewHolder.imgDelete.setOnClickListener(onClickListener);
@@ -105,6 +107,10 @@ public class AdapterListTodo extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ItemTodo prev = listTodo.remove(from);
         listTodo.add(to > from ? to - 1 : to, prev);
         notifyItemMoved(from, to);
+    }
+
+    public ArrayList<ItemTodo> getListItem() {
+        return listTodo;
     }
 
     public class ViewHolder extends ViewHolderHelper implements Extension {

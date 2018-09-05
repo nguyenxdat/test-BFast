@@ -24,7 +24,7 @@
             android:layout_marginLeft="@dimen/_15sdp"
             android:gravity="center"
             android:text="@string/loading"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_normal" />
 
     </RelativeLayout>

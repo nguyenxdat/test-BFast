@@ -5,6 +5,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.loopeer.itemtouchhelperextension.ItemTouchHelperExtension;
@@ -12,6 +14,7 @@ import com.loopeer.itemtouchhelperextension.ItemTouchHelperExtension;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import vn.datnx.todolist.R;
 import vn.datnx.todolist.adapter.AdapterListTodo;
 import vn.datnx.todolist.model.ItemTodo;
@@ -29,6 +32,10 @@ public class ActivityMain extends ActivityBaseWithActionBar
     RecyclerView recycleView;
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.txt_number)
+    TextView txtNumber;
+    @BindView(R.id.img_profile)
+    ImageView imgProfile;
 
     private AdapterListTodo adapterListTodo;
     private ItemTouchHelperExtension itemTouchHelper;
@@ -72,6 +79,11 @@ public class ActivityMain extends ActivityBaseWithActionBar
         swipeRefreshLayout.setOnRefreshListener(onRefreshListener);
     }
 
+    @OnClick(R.id.img_profile)
+    void onOpenProfileListener() {
+
+    }
+
     private void getListTodo() {
         showLoading();
         TaskGetListTodo taskGetListTodo = new TaskGetListTodo(getApplicationContext());
@@ -81,6 +93,7 @@ public class ActivityMain extends ActivityBaseWithActionBar
                 closeLoading();
                 swipeRefreshLayout.setRefreshing(false);
                 updateRecycleView(response);
+                updateTextView();
             }
         }, new TaskNetworkBase.ErrorListener() {
             @Override
@@ -90,6 +103,19 @@ public class ActivityMain extends ActivityBaseWithActionBar
                 showMessageWith(errorCode, errorMessage);
             }
         });
+    }
+
+    private void updateTextView() {
+        int numberComplete = 0;
+        int numberUnComplete = 0;
+        for (ItemTodo itemTodo : adapterListTodo.getListItem()) {
+            if (itemTodo.isComplete()) {
+                numberComplete ++;
+            } else {
+                numberUnComplete ++;
+            }
+        }
+        txtNumber.setText(numberUnComplete + "/" + numberComplete);
     }
 
     private void updateRecycleView(ArrayList<ItemTodo> listTodo) {
@@ -109,6 +135,7 @@ public class ActivityMain extends ActivityBaseWithActionBar
             public void onResponse(Boolean response) {
                 closeLoading();
                 adapterListTodo.addObject(itemTodo);
+                updateTextView();
             }
         }, new TaskNetworkBase.ErrorListener() {
             @Override
